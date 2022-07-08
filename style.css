@@ -1,0 +1,36 @@
+body {
+  background-color: black;
+}
+
+.line {
+  position: absolute;
+  background-color: white;
+}
+
+.horizontal {
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+
+.verticality {
+  left: 50%;
+  width: 1px;
+  height: 100%;
+}
+
+.target {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tag {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 35px;
+  color: white;
+  transform: translate(25px, 20px);
+}
