@@ -3,17 +3,24 @@ const verticality_div = document.querySelector(".verticality");
 const target_img = document.querySelector(".target");
 const tag_div = document.querySelector(".tag");
 
-const handleMouseMove = (e) => {
-  let { clientX, clientY } = e;
+window.addEventListener("load", () => {
+  const target_img_rect = target_img.getBoundingClientRect();
+  const targetHalfWidth = target_img_rect.width / 2;
+  const targetHalfHeight = target_img_rect.height / 2;
 
-  horizontal_div.style.top = `${clientY}px`;
-  verticality_div.style.left = `${clientX}px`;
-  target_img.style.left = `${clientX}px`;
-  target_img.style.top = `${clientY}px`;
+  console.log(target_img_rect, targetHalfWidth, targetHalfHeight);
 
-  tag_div.style.left = `${clientX}px`;
-  tag_div.style.top = `${clientY}px`;
-  tag_div.innerHTML = `X : ${clientX} Y : ${clientY}`;
-};
+  const handleMouseMove = (e) => {
+    let { clientX, clientY } = e;
 
-window.addEventListener("mousemove", handleMouseMove);
+    horizontal_div.style.transform = `translateY(${clientY}px)`;
+    verticality_div.style.transform = `translateX(${clientX}px)`;
+    target_img.style.transform = `translate(${clientX - targetHalfWidth}px,${
+      clientY - targetHalfHeight
+    }px)`;
+    tag_div.style.transform = `translate(${clientX}px,${clientY}px)`;
+    tag_div.innerHTML = `X : ${clientX} Y : ${clientY}`;
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+});
